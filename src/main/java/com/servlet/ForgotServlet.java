@@ -2,6 +2,7 @@ package com.servlet;
 
 import com.dao.dbcon;
 import com.Service.EmailServices;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +19,6 @@ public class ForgotServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Show forgot password page
         request.getRequestDispatcher("forgot-password.jsp").forward(request, response);
     }
 
@@ -42,7 +42,6 @@ public class ForgotServlet extends HttpServlet {
                 return;
             }
 
-            // Check if email exists in users table
             String checkSql = "SELECT id, full_name FROM users WHERE email = ?";
             PreparedStatement checkStmt = conn.prepareStatement(checkSql);
             checkStmt.setString(1, email);
@@ -57,14 +56,8 @@ public class ForgotServlet extends HttpServlet {
             String userName = rs.getString("full_name");
             System.out.println("User found: " + userName);
 
-            // Generate unique token
-            String token = UUID.randomUUID().toString();
 
-            // Delete any existing tokens for this email
-            String deleteSql = "DELETE FROM password_resets WHERE email = ?";
-            PreparedStatement deleteStmt = conn.prepareStatement(deleteSql);
-            deleteStmt.setString(1, email);
-            deleteStmt.executeUpdate();
+            String token = UUID.randomUUID().toString();
 
             // Insert new token (valid for 15 minutes)
             String insertSql = "INSERT INTO password_resets (email, token, expires_at) VALUES (?, ?, DATE_ADD(NOW(), INTERVAL 15 MINUTE))";

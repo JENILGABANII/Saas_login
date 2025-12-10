@@ -22,9 +22,6 @@ public class RegisterServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        System.out.println("=== REGISTRATION REQUEST ===");
-        System.out.println("Name: " + fullName);
-        System.out.println("Email: " + email);
 
         // Validate input
         if (fullName == null || fullName.trim().isEmpty() ||

@@ -1,11 +1,14 @@
 package com.servlet;
 
 import com.dao.dbcon;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.mindrot.jbcrypt.BCrypt;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,9 +23,6 @@ public class ResetServlet extends HttpServlet {
         String token = request.getParameter("token");
         String newPassword = request.getParameter("password");
 
-        System.out.println("=== RESET PASSWORD REQUEST ===");
-        System.out.println("Token: " + token);
-
         if (newPassword == null || newPassword.length() < 8) {
             response.sendRedirect("reset-password.jsp?error=weak&token=" + token);
             return;
@@ -36,9 +36,9 @@ public class ResetServlet extends HttpServlet {
 
             // Check if token is valid and not expired
             String tokenSql = "SELECT email FROM password_resets WHERE token = ? AND expires_at > NOW()";
-            PreparedStatement tokenStmt = conn.prepareStatement(tokenSql);
-            tokenStmt.setString(1, token);
-            ResultSet rs = tokenStmt.executeQuery();
+            PreparedStatement preparedStatement = conn.prepareStatement(tokenSql);
+            preparedStatement.setString(1, token);
+            ResultSet rs = preparedStatement.executeQuery();
 
             if (!rs.next()) {
                 System.out.println("Invalid or expired token: " + token);
