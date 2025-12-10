@@ -22,9 +22,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        System.out.println("=== LOGIN ATTEMPT ===");
-        System.out.println("Email: " + email);
+        String password = request.getParameter("password")
 
         try (Connection conn = dbcon.getConnection()) {
             if (conn == null) {
