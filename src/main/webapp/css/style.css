@@ -1,83 +1,86 @@
+/* css/style.css */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Segoe UI", sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background: linear-gradient(120deg, #0f172a, #1e293b);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
     display: flex;
-    align-items: center;
     justify-content: center;
-    color: #fff;
+    align-items: center;
+    padding: 20px;
 }
 
 .container {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     width: 100%;
     max-width: 400px;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
 }
 
 h2 {
     text-align: center;
-    margin-bottom: 20px;
-    font-weight: 600;
+    color: #333;
+    margin-bottom: 30px;
 }
 
 .input-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .input-group label {
     display: block;
-    font-size: 14px;
     margin-bottom: 5px;
-    color: #cbd5f5;
+    color: #555;
+    font-weight: 500;
 }
 
 .input-group input {
     width: 100%;
     padding: 12px;
-    border-radius: 10px;
-    border: none;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border 0.3s;
+}
+
+.input-group input:focus {
     outline: none;
-    background: #020617;
-    color: #fff;
-    font-size: 14px;
+    border-color: #667eea;
 }
 
 .btn {
     width: 100%;
     padding: 12px;
-    background: #3b82f6;
-    color: #fff;
+    background: #667eea;
+    color: white;
     border: none;
-    border-radius: 12px;
-    font-size: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
-    margin-top: 10px;
-    transition: 0.3s;
+    transition: background 0.3s;
 }
 
 .btn:hover {
-    background: #2563eb;
+    background: #5a67d8;
 }
 
 .link {
     text-align: center;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 .link a {
-    color: #93c5fd;
+    color: #667eea;
     text-decoration: none;
-    font-size: 14px;
+    margin: 0 5px;
 }
 
 .link a:hover {
@@ -85,14 +88,8 @@ h2 {
 }
 
 .alert {
-    background: #dc2626;
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 14px;
-    margin-bottom: 10px;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 5px;
     text-align: center;
-}
-
-.success {
-    background: #16a34a;
 }
