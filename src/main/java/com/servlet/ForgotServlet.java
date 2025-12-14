@@ -28,9 +28,6 @@ public class ForgotServlet extends HttpServlet {
 
         String email = request.getParameter("email");
 
-        System.out.println("=== FORGOT PASSWORD REQUEST ===");
-        System.out.println("Email: " + email);
-
         if (email == null || email.trim().isEmpty()) {
             response.sendRedirect("forgot-password.jsp?error=empty");
             return;
